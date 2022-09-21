@@ -14,8 +14,30 @@
 
 # Uncomment this to preserve the line number information for
 # debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+-keepattributes SourceFile,LineNumberTable
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
-#-renamesourcefileattribute SourceFile
+-renamesourcefileattribute SourceFile
+
+# +++ Logger +++
+# This will strip `Log.v`, `Log.d`, `Log.i`, `Log.w` and `Log.e` statements.
+# https://www.guardsquare.com/manual/configuration/examples#logging
+# https://issuetracker.google.com/issues/73708157#comment4
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static int v(...);
+    public static int d(...);
+    public static int i(...);
+    public static int w(...);
+    public static int e(...);
+}
+
+-assumenosideeffects class com.alletsxlab.proguardstripslog.utils.LogUtil {
+    public boolean canLog();
+    public *** d(...);
+    public *** i(...);
+    public *** w(...);
+    public *** e(...);
+}
+# --- Logger ---
