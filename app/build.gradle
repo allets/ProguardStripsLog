@@ -15,12 +15,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         signingConfig signingConfigs.debug
+
+        buildConfigField("Boolean", "IS_RELEASE", "false")
     }
 
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("Boolean", "IS_RELEASE", "true")
         }
         ProguardN {
             debuggable true
@@ -32,7 +36,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
         ProguardRules {
-            debuggable true
+            debuggable false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final LogUtil log = new LogUtil(this);
     private final LogUtil specialTest = new LogUtil("Test", false);
+    private final LogUtil unusedLogger = new LogUtil(this);
 
 
     @Override

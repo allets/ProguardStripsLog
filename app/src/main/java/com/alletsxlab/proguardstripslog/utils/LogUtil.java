@@ -37,7 +37,7 @@ public class LogUtil {
     }
 
     public boolean canLog() {
-        return BuildConfig.DEBUG && isDebug;
+        return !BuildConfig.IS_RELEASE && isDebug;
     }
 
     public void d(String msg) {

@@ -40,4 +40,12 @@
     public *** w(...);
     public *** e(...);
 }
+
+# make R8 remove the implicit logger null checks
+# https://issuetracker.google.com/issues/174285670#comment19
+# the logger instance gets checked for NonNull, bytecode:
+# invoke-static {v0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+-assumevalues class com.alletsxlab.proguardstripslog.** {
+    private com.alletsxlab.proguardstripslog.utils.LogUtil * return 1;
+}
 # --- Logger ---
