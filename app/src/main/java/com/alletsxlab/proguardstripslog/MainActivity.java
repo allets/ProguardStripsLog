@@ -3,14 +3,12 @@ package com.alletsxlab.proguardstripslog;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.alletsxlab.proguardstripslog.base.BaseActivity;
 import com.alletsxlab.proguardstripslog.utils.LogUtil;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    private final LogUtil log = new LogUtil(this);
     private final LogUtil specialTest = new LogUtil("Test", false);
     private final LogUtil unusedLogger = new LogUtil(this);
 

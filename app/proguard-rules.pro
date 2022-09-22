@@ -46,6 +46,8 @@
 # the logger instance gets checked for NonNull, bytecode:
 # invoke-static {v0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
 -assumevalues class com.alletsxlab.proguardstripslog.** {
+    public com.alletsxlab.proguardstripslog.utils.LogUtil * return 1;
     private com.alletsxlab.proguardstripslog.utils.LogUtil * return 1;
+    protected com.alletsxlab.proguardstripslog.utils.LogUtil * return 1;
 }
 # --- Logger ---
