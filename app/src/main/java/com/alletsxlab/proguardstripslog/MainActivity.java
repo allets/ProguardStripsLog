@@ -12,6 +12,8 @@ public class MainActivity extends BaseActivity {
     private final LogUtil specialTest = new LogUtil("Test", false);
     private final LogUtil unusedLogger = new LogUtil(this);
 
+    private String memberVar = "member var";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,17 @@ public class MainActivity extends BaseActivity {
         specialTest.i("LogUtil Log onCreate");
         specialTest.w("LogUtil Log onCreate");
         specialTest.e("LogUtil Log onCreate");
+
+        Log.d(TAG, "Android Log concat " + "string");
+        log.d("LogUtil Log concat " + "string");
+
+        String localVar = "local var";
+        Log.d(TAG, "Android Log concat " + localVar);
+        log.d("LogUtil Log concat " + localVar);
+
+        Log.d(TAG, "Android Log concat " + memberVar);
+        log.d("LogUtil Log concat " + memberVar);
+        log.d("LogUtil Log concat %s", memberVar);
 
         if (savedInstanceState == null) {
             MainFragment fragment = MainFragment.newInstance();

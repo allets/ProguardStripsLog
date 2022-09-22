@@ -72,4 +72,36 @@ public class LogUtil {
         Log.e(tag, msg);
     }
 
+    public void d(String format, Object... args) {
+        if (!canLog()) {
+            return;
+        }
+
+        Log.d(tag, String.format(format, args));
+    }
+
+    public void i(String format, Object... args) {
+        if (!canLog()) {
+            return;
+        }
+
+        Log.i(tag, String.format(format, args));
+    }
+
+    public void w(String format, Object... args) {
+        if (!canLog()) {
+            return;
+        }
+
+        Log.w(tag, String.format(format, args));
+    }
+
+    public void e(String format, Object... args) {
+        if (!canLog()) {
+            return;
+        }
+
+        Log.e(tag, String.format(format, args));
+    }
+
 }
