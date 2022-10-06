@@ -31,7 +31,7 @@ android {
             minifyEnabled false
         }
         ProguardY {
-            debuggable true
+            debuggable false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
         }
