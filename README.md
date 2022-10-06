@@ -56,27 +56,27 @@ log.d("LogUtil Log %s", localVar)
 
 ## Unsolved issues
 
--   R8 does not strip an unused instance of the custom logger in a super class (e.g. `BaseActivity`) in kotlin.
-	
-	```
-	// kotlin
-	protected val log = LogUtil(this)
-	
-	// bytecode before proguard
-	new-instance v0, Lcom/alletsxlab/proguardstripslog/utils/LogUtil;
-	const/4 v1, 0x0
-	const/4 v2, 0x2
-	const/4 v3, 0x0
-	invoke-direct {v0, p0, v1, v2, v3}, Lcom/alletsxlab/proguardstripslog/utils/LogUtil;-><init>(Ljava/lang/Object;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	iput-object v0, p0, Lcom/alletsxlab/proguardstripslog/base/BaseActivity;->log:Lcom/alletsxlab/proguardstripslog/utils/LogUtil;
-	
-	// bytecode after proguard
-	new-instance v0, Le1/a;
-	const/4 v1, 0x0
-	const/4 v2, 0x2
-	invoke-direct {v0, p0, v1, v2}, Le1/a;-><init>(Ljava/lang/Object;ZI)V
-	iput-object v0, p0, Ld1/a;->w:Le1/a;
-	```
+### R8 does not strip an unused instance of the custom logger in a super class (e.g. `BaseActivity`) in kotlin.
+
+```
+// kotlin
+protected val log = LogUtil(this)
+
+// bytecode before proguard
+new-instance v0, Lcom/alletsxlab/proguardstripslog/utils/LogUtil;
+const/4 v1, 0x0
+const/4 v2, 0x2
+const/4 v3, 0x0
+invoke-direct {v0, p0, v1, v2, v3}, Lcom/alletsxlab/proguardstripslog/utils/LogUtil;-><init>(Ljava/lang/Object;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+iput-object v0, p0, Lcom/alletsxlab/proguardstripslog/base/BaseActivity;->log:Lcom/alletsxlab/proguardstripslog/utils/LogUtil;
+
+// bytecode after proguard
+new-instance v0, Le1/a;
+const/4 v1, 0x0
+const/4 v2, 0x2
+invoke-direct {v0, p0, v1, v2}, Le1/a;-><init>(Ljava/lang/Object;ZI)V
+iput-object v0, p0, Ld1/a;->w:Le1/a;
+```
 
 
 
