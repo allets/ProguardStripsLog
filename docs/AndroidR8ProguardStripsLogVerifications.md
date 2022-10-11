@@ -16,7 +16,7 @@ For easy understanding and concise screenshots with the full context, I use d2j-
 
 ## Java
 
-commit 439a0463
+commit 8ffd4906
 
 [MainActivity](../app/src/main/java/com/alletsxlab/proguardstripslog/MainActivity.java)
 
@@ -30,15 +30,15 @@ commit 439a0463
 
 `MainActivity`:
 
-![](./assets/439a0463-app-ProguardN-MainActivity.png)
+![](./assets/8ffd4906-app-ProguardN-MainActivity.png)
 
 `BaseActivity`:
 
-![](./assets/439a0463-app-ProguardN-BaseActivity.png)
+![](./assets/8ffd4906-app-ProguardN-BaseActivity.png)
 
 `LogUtil`:
 
-![](./assets/439a0463-app-ProguardN-LogUtil.png)
+![](./assets/8ffd4906-app-ProguardN-LogUtil.png)
 
 
 
@@ -49,15 +49,15 @@ commit 439a0463
 
 `MainActivity`:
 
-![](./assets/439a0463-app-ProguardY-MainActivity.png)
+![](./assets/8ffd4906-app-ProguardY-MainActivity.png)
 
 `BaseActivity`:
 
-![](./assets/439a0463-app-ProguardY-BaseActivity.png)
+![](./assets/8ffd4906-app-ProguardY-BaseActivity.png)
 
 `LogUtil`:
 
-![](./assets/439a0463-app-ProguardY-LogUtil.png)
+![](./assets/8ffd4906-app-ProguardY-LogUtil.png)
 
 
 
@@ -68,12 +68,12 @@ commit 439a0463
 
 `MainActivity`:
 
-![](./assets/439a0463-app-ProguardRules-MainActivity.png)
+![](./assets/8ffd4906-app-ProguardRules-MainActivity.png)
 
 `MainActivity.onCreate()` bytecode:
 
 ```
-.method public onCreate(Landroid/os/Bundle;)V
+.method public final onCreate(Landroid/os/Bundle;)V
     .registers 6
 
     .line 1
@@ -82,7 +82,7 @@ commit 439a0463
     const v0, 0x7f0b001c
 
     .line 2
-    invoke-virtual {p0, v0}, Ld/h;->setContentView(I)V
+    invoke-virtual {p0, v0}, Ld/g;->setContentView(I)V
 
     if-nez p1, :cond_27
 
@@ -125,13 +125,13 @@ commit 439a0463
 
 `BaseActivity`:
 
-![](./assets/439a0463-app-ProguardRules-BaseActivity.png)
+![](./assets/8ffd4906-app-ProguardRules-BaseActivity.png)
 
 `BaseActivity` bytecode:
 
 ```
 .class public Lz0/a;
-.super Ld/h;
+.super Ld/g;
 .source "SourceFile"
 
 
@@ -139,8 +139,7 @@ commit 439a0463
 .method public constructor <init>()V
     .registers 1
 
-    .line 1
-    invoke-direct {p0}, Ld/h;-><init>()V
+    invoke-direct {p0}, Ld/g;-><init>()V
 
     return-void
 .end method
@@ -150,7 +149,7 @@ commit 439a0463
 
 ## Kotlin
 
-commit 9abfbb33
+commit 8ffd4906
 
 [MainActivity](../appkt/src/main/java/com/alletsxlab/proguardstripslog/MainActivity.kt)
 
@@ -164,15 +163,15 @@ commit 9abfbb33
 
 `MainActivity`:
 
-![](./assets/9abfbb33-appkt-ProguardN-MainActivity.png)
+![](./assets/8ffd4906-appkt-ProguardN-MainActivity.png)
 
 `BaseActivity`:
 
-![](./assets/9abfbb33-appkt-ProguardN-BaseActivity.png)
+![](./assets/8ffd4906-appkt-ProguardN-BaseActivity.png)
 
 `LogUtil`:
 
-![](./assets/9abfbb33-appkt-ProguardN-LogUtil.png)
+![](./assets/8ffd4906-appkt-ProguardN-LogUtil.png)
 
 
 
@@ -183,15 +182,15 @@ commit 9abfbb33
 
 `MainActivity`:
 
-![](./assets/9abfbb33-appkt-ProguardY-MainActivity.png)
+![](./assets/8ffd4906-appkt-ProguardY-MainActivity.png)
 
 `BaseActivity`:
 
-![](./assets/9abfbb33-appkt-ProguardY-BaseActivity.png)
+![](./assets/8ffd4906-appkt-ProguardY-BaseActivity.png)
 
 `LogUtil`:
 
-![](./assets/9abfbb33-appkt-ProguardY-LogUtil.png)
+![](./assets/8ffd4906-appkt-ProguardY-LogUtil.png)
 
 
 
@@ -203,12 +202,12 @@ commit 9abfbb33
 
 `MainActivity`:
 
-![](./assets/9abfbb33-appkt-ProguardRules-MainActivity.png)
+![](./assets/8ffd4906-appkt-ProguardRules-MainActivity.png)
 
 `MainActivity.onCreate()` bytecode:
 
 ```
-.method public onCreate(Landroid/os/Bundle;)V
+.method public final onCreate(Landroid/os/Bundle;)V
     .registers 6
 
     .line 1
@@ -217,43 +216,46 @@ commit 9abfbb33
     const v0, 0x7f0b001c
 
     .line 2
-    invoke-virtual {p0, v0}, Ld/h;->setContentView(I)V
+    invoke-virtual {p0, v0}, Ld/g;->setContentView(I)V
 
-    const-string v0, "Android Log concat "
+    const-string v0, "local var"
 
-    const-string v1, "local var"
+    const-string v1, "Android Log concat "
 
     .line 3
-    invoke-static {v0, v1}, Ls/d;->J(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v1, v0}, Ls/d;->n(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
 
     const-string v2, "LogUtil Log concat "
 
     .line 4
-    invoke-static {v2, v1}, Ls/d;->J(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v2, v0}, Ls/d;->n(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
 
     .line 5
-    iget-object v1, p0, Lcom/alletsxlab/proguardstripslog/MainActivity;->x:Ljava/lang/String;
+    iget-object v0, p0, Lcom/alletsxlab/proguardstripslog/MainActivity;->x:Ljava/lang/String;
 
-    invoke-static {v0, v1}, Ls/d;->J(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v1, v0}, Ls/d;->n(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
 
     .line 6
     iget-object v0, p0, Lcom/alletsxlab/proguardstripslog/MainActivity;->x:Ljava/lang/String;
 
-    invoke-static {v2, v0}, Ls/d;->J(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v2, v0}, Ls/d;->n(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
 
-    if-nez p1, :cond_3d
+    if-nez p1, :cond_3f
 
     .line 7
+    sget-object p1, Lc1/a;->V:Lc1/a$a;
+
+    .line 8
     new-instance p1, Lc1/a;
 
     invoke-direct {p1}, Lc1/a;-><init>()V
 
-    .line 8
+    .line 9
     invoke-virtual {p0}, Landroidx/fragment/app/o;->y()Landroidx/fragment/app/x;
 
     move-result-object v0
 
-    .line 9
+    .line 10
     new-instance v1, Landroidx/fragment/app/a;
 
     invoke-direct {v1, v0}, Landroidx/fragment/app/a;-><init>(Landroidx/fragment/app/x;)V
@@ -264,31 +266,31 @@ commit 9abfbb33
 
     const/4 v3, 0x1
 
-    .line 10
+    .line 11
     invoke-virtual {v1, v0, p1, v2, v3}, Landroidx/fragment/app/a;->e(ILandroidx/fragment/app/n;Ljava/lang/String;I)V
 
-    .line 11
+    .line 12
     iput-boolean v3, v1, Landroidx/fragment/app/e0;->o:Z
 
     const/4 p1, 0x0
 
-    .line 12
+    .line 13
     invoke-virtual {v1, p1}, Landroidx/fragment/app/a;->d(Z)I
 
-    :cond_3d
+    :cond_3f
     return-void
 .end method
 ```
 
 `BaseActivity`:
 
-![](./assets/9abfbb33-appkt-ProguardRules-BaseActivity.png)
+![](./assets/8ffd4906-appkt-ProguardRules-BaseActivity.png)
 
 `BaseActivity` bytecode:
 
 ```
 .class public Ld1/a;
-.super Ld/h;
+.super Ld/g;
 .source "SourceFile"
 
 
@@ -298,19 +300,15 @@ commit 9abfbb33
 
 # direct methods
 .method public constructor <init>()V
-    .registers 4
+    .registers 2
 
     .line 1
-    invoke-direct {p0}, Ld/h;-><init>()V
+    invoke-direct {p0}, Ld/g;-><init>()V
 
     .line 2
     new-instance v0, Le1/a;
 
-    const/4 v1, 0x0
-
-    const/4 v2, 0x2
-
-    invoke-direct {v0, p0, v1, v2}, Le1/a;-><init>(Ljava/lang/Object;ZI)V
+    invoke-direct {v0, p0}, Le1/a;-><init>(Ljava/lang/Object;)V
 
     iput-object v0, p0, Ld1/a;->w:Le1/a;
 
@@ -320,7 +318,7 @@ commit 9abfbb33
 
 `LogUtil`:
 
-![](./assets/9abfbb33-appkt-ProguardRules-LogUtil.png)
+![](./assets/8ffd4906-appkt-ProguardRules-LogUtil.png)
 
 ```
 .class public final Le1/a;
@@ -333,21 +331,21 @@ commit 9abfbb33
 
 
 # direct methods
-.method public constructor <init>(Ljava/lang/Object;ZI)V
+.method public constructor <init>(Ljava/lang/Object;)V
     .registers 4
 
-    and-int/lit8 p1, p3, 0x2
+    const/4 v0, 0x1
 
-    if-eqz p1, :cond_5
-
-    const/4 p2, 0x1
+    const-string v1, "obj"
 
     .line 1
-    :cond_5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-static {p1, v1}, Ls/d;->i(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 2
-    iput-boolean p2, p0, Le1/a;->a:Z
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    iput-boolean v0, p0, Le1/a;->a:Z
 
     return-void
 .end method
