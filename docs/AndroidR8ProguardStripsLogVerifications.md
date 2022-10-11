@@ -10,7 +10,7 @@ Verification flow:
 -   Android Studio "Build > Analyze APK... > Select Path"
 -   check the bytecode with the naked eye
 
-For easy understanding and concise screenshots with the full context, I use d2j-dex2jar 2.1 and jd-gui 1.6.6 to facilitate illustrations instead of using complete bytecode screenshots. Also, I show the key bytecode snippets.
+For easy understanding and concise screenshots with the full context, I use d2j-dex2jar 2.1 and Luyten 0.8.2 ([more info](#java-decompiler-gui)) to facilitate illustrations instead of using complete bytecode screenshots. Also, I show the key bytecode snippets.
 
 
 
@@ -351,6 +351,39 @@ commit 9abfbb33
 
     return-void
 .end method
+```
+
+
+
+## Java Decompiler GUI
+
+-   d2j-dex2jar 2.1, [Luyten 0.8.2](https://github.com/ThexXTURBOXx/Luyten/releases)
+	-   [Luyten 0.5.4 (The original project is NOT entirely dead. Just resting.)](https://github.com/deathmarine/Luyten)
+-   d2j-dex2jar 2.1, jd-gui 1.6.6
+
+
+jd-gui can not often decompile code correctly.
+
+![](./assets/jd-gui_cannot_decompile_code_correctly.png)
+
+I change to mainly use Luyten 0.8.2.
+It can jump to declaration, display line numbers.
+
+More, I have tried [jadx-gui 1.4.4](https://github.com/skylot/jadx/releases).
+There are more useful features to work more efficiently.
+For example, it can decompile Dex to Java.
+However, it does too much code restructuring to result in fidelity loss.
+The following is a example of string concatenation.
+
+```
+// expected result
+final StringBuilder sb = new StringBuilder();
+sb.append("Android Log concat ");
+sb.append("local var");
+Log.d(tag, sb.toString());
+
+// jadx-gui 1.4.4
+Log.d(str, "Android Log concat local var");
 ```
 
 
