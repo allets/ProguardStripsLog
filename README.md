@@ -1,6 +1,6 @@
 # Android R8 proguard strips log
 
-The Lab project aims to find Android R8 proguard rules to strip log statements in Java and Kotlin. Rules are useful for `android.util.Log` class and my custom logger (a wrapper around the `android.util.Log` class).
+The lab project aims to find Android R8 proguard rules to strip log statements in Java and Kotlin. Rules are useful for `android.util.Log` class and my custom logger (a wrapper around the `android.util.Log` class).
 
 There are [verifications](./docs/AndroidR8ProguardStripsLogVerifications.md) of Java and Kotlin Apps.
 
@@ -37,7 +37,7 @@ log.d("LogUtil Log %s", localVar)
 -   total 12 (2x3x2)
 	-   code lang x2: Java, Kotlin
 	-   log wrapper x2: N, custom
-	-   enable proguard x3: N, Y (enable), Rules (enable with proguard rule)
+	-   enable proguard x3: N, Y (enable), Rules (enable with proguard rules)
 
 
 -   string concatenation in log messages

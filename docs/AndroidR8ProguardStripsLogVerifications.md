@@ -384,7 +384,7 @@ More, I have tried [jadx-gui 1.4.4](https://github.com/skylot/jadx/releases).
 There are more useful features to work more efficiently.
 For example, it can decompile Dex to Java.
 However, it does too much code restructuring to result in fidelity loss.
-The following is a example of string concatenation.
+The following is an example of string concatenation.
 
 ```
 // expected result
