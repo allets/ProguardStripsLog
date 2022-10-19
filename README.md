@@ -185,33 +185,78 @@ related issues
 
 
 
-### R8 does not strip unused string concatenation in kotlin. But a custom logger supporting parameterized strings can avoid that.
+### R8 does not strip unused string concatenation in kotlin.
 
-My env: Gradle 7.2, AGP 7.1.2, (default) R8 3.1.66, Kotlin 1.6.10
+environment
+-   Gradle 7.2, AGP 7.1.2, (default) R8 3.1.66, Kotlin 1.6.10
 
 unused string concatenation in kotlin, bytecode:
 
 ```
 // kotlin
 val localVar = "local var"
-Log.d(TAG, "Android Log concat $localVar") // `Log.d` was stripped but the string concatenation was left.
+Log.d(TAG, "Android Log concat $localVar")
 
 // bytecode before proguard
 const-string v0, "local var"
 .local v0, "localVar":Ljava/lang/String;
+iget-object v1, p0, Lcom/alletsxlab/proguardstripslog/MainActivity;->TAG:Ljava/lang/String;
 const-string v2, "Android Log concat "
 invoke-static {v2, v0}, Lkotlin/jvm/internal/Intrinsics;->stringPlus(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
 move-result-object v3
+invoke-static {v1, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
 // bytecode after proguard
+// `Log.d` was stripped but the string concatenation was left.
 const-string v0, "Android Log concat "
 const-string v1, "local var"
 invoke-static {v0, v1}, Ls/d;->J(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/String;
 ```
 
 
-related issues:
+related issues
 -   https://issuetracker.google.com/issues/190489514
+
+
+related commits in the project
+-   061aa6ce
+
+
+
+#### solution
+
+Kotlin 1.6.20 and above can solve it,
+because Kotlin 1.6.20 changes the bytecode of string concatenation from `Intrinsics.stringPlus()` to `StringBuilder`.
+
+Or a custom logger supporting parameterized strings can avoid that.
+
+
+environment
+-   Gradle 7.2, AGP 7.1.2, (default) R8 3.1.66, Kotlin 1.6.20
+
+string concatenation in kotlin, bytecode:
+
+```
+// kotlin
+val localVar = "local var"
+Log.d(TAG, "Android Log concat $localVar") 
+
+// bytecode before proguard
+const-string v0, "local var"
+.local v0, "localVar":Ljava/lang/String;
+iget-object v1, p0, Lcom/alletsxlab/proguardstripslog/MainActivity;->TAG:Ljava/lang/String;
+new-instance v2, Ljava/lang/StringBuilder;
+invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+const-string v3, "Android Log concat "
+invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+move-result-object v2
+invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+// bytecode after proguard
+// `Log.d` and the string concatenation were stripped by R8.
+```
 
 
 

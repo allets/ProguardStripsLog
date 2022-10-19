@@ -16,7 +16,7 @@ For easy understanding and concise screenshots with the full context, I use d2j-
 
 ## Java
 
-commit 0a514e54
+commit 061aa6ce
 
 [MainActivity](../app/src/main/java/com/alletsxlab/proguardstripslog/MainActivity.java)
 
@@ -30,15 +30,15 @@ commit 0a514e54
 
 `MainActivity`:
 
-![](./assets/0a514e54-app-ProguardN-MainActivity.png)
+![](./assets/061aa6ce-app-ProguardN-MainActivity.png)
 
 `BaseActivity`:
 
-![](./assets/0a514e54-app-ProguardN-BaseActivity.png)
+![](./assets/061aa6ce-app-ProguardN-BaseActivity.png)
 
 `LogUtil`:
 
-![](./assets/0a514e54-app-ProguardN-LogUtil.png)
+![](./assets/061aa6ce-app-ProguardN-LogUtil.png)
 
 
 
@@ -49,15 +49,15 @@ commit 0a514e54
 
 `MainActivity`:
 
-![](./assets/0a514e54-app-ProguardY-MainActivity.png)
+![](./assets/061aa6ce-app-ProguardY-MainActivity.png)
 
 `BaseActivity`:
 
-![](./assets/0a514e54-app-ProguardY-BaseActivity.png)
+![](./assets/061aa6ce-app-ProguardY-BaseActivity.png)
 
 `LogUtil`:
 
-![](./assets/0a514e54-app-ProguardY-LogUtil.png)
+![](./assets/061aa6ce-app-ProguardY-LogUtil.png)
 
 
 
@@ -70,7 +70,7 @@ commit 0a514e54
 
 `MainActivity`:
 
-![](./assets/0a514e54-app-ProguardRules-MainActivity.png)
+![](./assets/061aa6ce-app-ProguardRules-MainActivity.png)
 
 `MainActivity.onCreate()` bytecode:
 
@@ -168,7 +168,7 @@ commit 0a514e54
 
 `BaseActivity`:
 
-![](./assets/0a514e54-app-ProguardRules-BaseActivity.png)
+![](./assets/061aa6ce-app-ProguardRules-BaseActivity.png)
 
 `BaseActivity` bytecode:
 
@@ -192,7 +192,7 @@ commit 0a514e54
 
 ## Kotlin
 
-commit 0a514e54
+commit 061aa6ce
 
 [MainActivity](../appkt/src/main/java/com/alletsxlab/proguardstripslog/MainActivity.kt)
 
@@ -206,15 +206,15 @@ commit 0a514e54
 
 `MainActivity`:
 
-![](./assets/0a514e54-appkt-ProguardN-MainActivity.png)
+![](./assets/061aa6ce-appkt-ProguardN-MainActivity.png)
 
 `BaseActivity`:
 
-![](./assets/0a514e54-appkt-ProguardN-BaseActivity.png)
+![](./assets/061aa6ce-appkt-ProguardN-BaseActivity.png)
 
 `LogUtil`:
 
-![](./assets/0a514e54-appkt-ProguardN-LogUtil.png)
+![](./assets/061aa6ce-appkt-ProguardN-LogUtil.png)
 
 
 
@@ -225,30 +225,28 @@ commit 0a514e54
 
 `MainActivity`:
 
-![](./assets/0a514e54-appkt-ProguardY-MainActivity.png)
+![](./assets/061aa6ce-appkt-ProguardY-MainActivity.png)
 
 `BaseActivity`:
 
-![](./assets/0a514e54-appkt-ProguardY-BaseActivity.png)
+![](./assets/061aa6ce-appkt-ProguardY-BaseActivity.png)
 
 `LogUtil`:
 
-![](./assets/0a514e54-appkt-ProguardY-LogUtil.png)
+![](./assets/061aa6ce-appkt-ProguardY-LogUtil.png)
 
 
 
 ### proguard with rules
 
--   R8 strips most of the log statements,
-	but it leaves unused string concatenation.
--   R8 strips all of the custom logger instances.
+-   R8 strips all of the log statements and the custom logger instances.
 
 
 **Some of the blank lines with line number in the following bytecode snippets have been stripped manually.**
 
 `MainActivity`:
 
-![](./assets/0a514e54-appkt-ProguardRules-MainActivity.png)
+![](./assets/061aa6ce-appkt-ProguardRules-MainActivity.png)
 
 `MainActivity.onCreate()` bytecode:
 
@@ -272,121 +270,81 @@ commit 0a514e54
     .line 8
     .line 9
     .line 10
-    const-string v0, "local var"
+    if-nez p1, :cond_2c
 
     .line 11
     .line 12
-    const-string v1, "Android Log concat "
+    new-instance p1, Lc1/a;
 
     .line 13
     .line 14
-    invoke-static {v0, v1}, Lo2/c;->f(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {p1}, Lc1/a;-><init>()V
 
     .line 15
     .line 16
     .line 17
-    const-string v2, "LogUtil Log concat "
+    iget-object v0, p0, Landroidx/fragment/app/p;->p:Landroidx/fragment/app/r;
 
     .line 18
     .line 19
-    invoke-static {v0, v2}, Lo2/c;->f(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
+    iget-object v0, v0, Landroidx/fragment/app/r;->a:Landroidx/fragment/app/t;
 
     .line 20
     .line 21
+    iget-object v0, v0, Landroidx/fragment/app/t;->f:Landroidx/fragment/app/z;
+
     .line 22
-    iget-object v0, p0, Lcom/alletsxlab/proguardstripslog/MainActivity;->w:Ljava/lang/String;
-
     .line 23
-    .line 24
-    invoke-static {v0, v1}, Lo2/c;->f(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
+    .line 24
     .line 25
     .line 26
+    new-instance v1, Landroidx/fragment/app/a;
+
     .line 27
-    iget-object v0, p0, Lcom/alletsxlab/proguardstripslog/MainActivity;->w:Ljava/lang/String;
-
     .line 28
-    .line 29
-    invoke-static {v0, v2}, Lo2/c;->f(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {v1, v0}, Landroidx/fragment/app/a;-><init>(Landroidx/fragment/app/y;)V
 
+    .line 29
     .line 30
     .line 31
-    .line 32
-    if-nez p1, :cond_42
+    const v0, 0x7f0800c9
 
+    .line 32
     .line 33
     .line 34
-    new-instance p1, Lc1/a;
+    const/4 v2, 0x0
 
     .line 35
+    const/4 v3, 0x1
+
     .line 36
-    invoke-direct {p1}, Lc1/a;-><init>()V
+    invoke-virtual {v1, v0, p1, v2, v3}, Landroidx/fragment/app/a;->e(ILandroidx/fragment/app/o;Ljava/lang/String;I)V
 
     .line 37
     .line 38
     .line 39
-    iget-object v0, p0, Landroidx/fragment/app/p;->p:Landroidx/fragment/app/r;
+    iput-boolean v3, v1, Landroidx/fragment/app/f0;->o:Z
 
     .line 40
     .line 41
-    iget-object v0, v0, Landroidx/fragment/app/r;->a:Landroidx/fragment/app/t;
-
-    .line 42
-    .line 43
-    iget-object v0, v0, Landroidx/fragment/app/t;->f:Landroidx/fragment/app/z;
-
-    .line 44
-    .line 45
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 46
-    .line 47
-    .line 48
-    new-instance v1, Landroidx/fragment/app/a;
-
-    .line 49
-    .line 50
-    invoke-direct {v1, v0}, Landroidx/fragment/app/a;-><init>(Landroidx/fragment/app/y;)V
-
-    .line 51
-    .line 52
-    .line 53
-    const v0, 0x7f0800c9
-
-    .line 54
-    .line 55
-    .line 56
-    const/4 v2, 0x0
-
-    .line 57
-    const/4 v3, 0x1
-
-    .line 58
-    invoke-virtual {v1, v0, p1, v2, v3}, Landroidx/fragment/app/a;->e(ILandroidx/fragment/app/o;Ljava/lang/String;I)V
-
-    .line 59
-    .line 60
-    .line 61
-    iput-boolean v3, v1, Landroidx/fragment/app/f0;->o:Z
-
-    .line 62
-    .line 63
     const/4 p1, 0x0
 
-    .line 64
+    .line 42
     invoke-virtual {v1, p1}, Landroidx/fragment/app/a;->d(Z)I
 
-    .line 65
-    .line 66
-    .line 67
-    :cond_42
+    .line 43
+    .line 44
+    .line 45
+    :cond_2c
     return-void
 .end method
 ```
 
 `BaseActivity`:
 
-![](./assets/0a514e54-appkt-ProguardRules-BaseActivity.png)
+![](./assets/061aa6ce-appkt-ProguardRules-BaseActivity.png)
 
 `BaseActivity` bytecode:
 
